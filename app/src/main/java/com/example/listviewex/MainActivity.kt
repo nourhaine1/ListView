@@ -2,6 +2,7 @@ package com.example.listviewex
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
@@ -25,5 +26,14 @@ class MainActivity : AppCompatActivity() {
 
         )
         listview.adapter=adapter
+        //gestion de click
+        listview.onItemClickListener=AdapterView.OnItemClickListener{ parent ,view,position,id->
+           //calback
+            val selectedItem=parent.getItemAtPosition(position) as String //specifier le type de lelement selectionner
+            //on va l afficher dans le texte view
+            textView.text="The color that you selected is $selectedItem"
+
+
+        }
     }
 }
